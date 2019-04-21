@@ -1,0 +1,145 @@
+body{
+    background-image: url(../img/Pizelex.jpg);
+    background-size: cover;
+    font-family: 'Encode Sans', sans-serif;
+   
+}
+.bg-dark{
+    background-color: black !important;
+}
+.navbar-brand {
+    color: #c0392b !important;
+    font-size: 1.5em;
+    font-family: 'Pacifico', cursive;
+}
+.nav-link:hover{
+    color: #f39c12 !important;
+}
+
+a{
+   text-decoration: none !important;
+    padding: 4px;
+    color: gray;
+}
+a:hover{
+    color: #f39c12;
+}
+.card{   
+    text-align: center;
+    color: white;
+}
+.tituloQC{
+    color: #ecf0f1;
+    font-size:5em;
+    line-height: 2.5;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    padding: 4px;
+}
+.subtitulo{
+    font-size: 1.5em;
+    text-align: end;
+}
+
+img{
+    height: 10%;
+}
+.center_div__{
+    margin: 0 auto;
+    width:80%;
+}
+.tituloabout{
+    color: #bdc3c7;
+    font-size: 2em;
+    font-family: 'Pacifico', cursive;
+}
+.about{
+    font-size: 1em;
+}
+.jugar{
+    padding: 2px;
+    margin: 5px;
+    height: 45%;
+    width: 100%;
+}
+.play{
+    font-size: 3em;
+    font-family: 'Pacifico', cursive;
+    color: #c0392b;
+}
+.play:hover{
+    color: #d35400;
+
+}
+.center_div__{
+    margin: 0 auto;
+    width:80%;
+}
+#collapseOne{
+    color: #bdc3c7;
+    background-color:#34495e;   
+}
+#card {
+    border: none;
+    background-image: url(../img/Pizelex.jpg);
+    background-size: cover;
+
+}
+#btn-title{
+    text-decoration: none;
+    color:black;
+    font-size: 25px;    
+}
+.icon{
+    color:black;
+}
+.login{
+    width: 100%;
+    height: 100vh;
+}
+#tituloFAQ{
+    background-color: #e67e22;
+ 
+}
+.FAQ{
+    padding: 0.6em;
+    font-size: 4em;
+    text-align: center;
+    color: white;
+    font-family: 'Pacifico', cursive;
+    background-color: rgba(0, 0, 0, 0.3) ;
+}
+.pie{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+@media(max-width: 800px){
+    .play{
+        font-size: 1.5em;
+    }
+}
+
+@media(max-width: 800px){
+ 
+    .tituloQC{
+        font-size: 3em;
+        line-height: 0.5;
+    }
+}
+@media(max-width: 569px){
+    .FAQ{
+        font-size: 1.5em;
+    }
+
+}
+@media(max-width: 300px){
+    .FAQ{
+        font-size: 2em;
+        
+    }
+    .tituloQC{
+        font-size: 1.5em;
+    }
+}
