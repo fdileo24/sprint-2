@@ -14,7 +14,7 @@ function validarLogin($datos){
     if (empty($usuario)){
         $errores["UsuarioLogin"]='Por favor, ingresa un usuario';
     }
-    $password=trim($datos["PasswordLogin"]);
+    $password=trim($datos["password"]);
     if(!empty($password)){
     $user=buscarEmail($usuario);
         if (empty($user)){
@@ -49,8 +49,8 @@ function validarSignUp($datos){
         $errores["mailSignUp"]='Por favor, ingresa un email';
     }
 
-    $password=trim($datos["passwordSignup"]);
-    $repassword=trim($datos["repasswordSignup"]);
+    $password=trim($datos["password"]);
+    $repassword=trim($datos["repassword"]);
     if(empty($password)){
         $errores["Password"]="No ingresaste un password";
         }elseif (strlen($password)<6){
@@ -70,43 +70,6 @@ function validarSignUp($datos){
     return $errores;
 }
 
-/*
-function validar($datos){
-    $errores=[];
-
-    $nombre = trim($datos["nombre"]);
-    if(empty($nombre)){
-        $errores["nombre"]= "El campo nombre no debe estar vacio";
-    }
-    $email = trim($datos["email"]);
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $errores["email"]="Email invalido !!!!!";
-    }
-    $password= trim($datos["password"]);
-    $repassword = trim($datos["repassword"]);
-    if(empty($password)){
-        $errores["password"]= "Hermano mio el campo password no lo podés dejar en blanco";
-    }elseif (strlen($password)<6) {
-        $errores["password"]="La contraseña debe tener como mínimo 6 caracteres";
-    }elseif ($password != $repassword) {
-        $errores["repassword"]="Las contraseñas no coinciden";
-    }
- 
-    if(isset($_FILES)){
-        if($_FILES["avatar"]["error"]!=0){
-            $errores["avatar"]="Error debe subir imagen";
-        }
-        $nombre = $_FILES["avatar"]["name"];
-        $ext = pathinfo($nombre,PATHINFO_EXTENSION);
-        if($ext != "png" && $ext != "jpg"){
-            $errores["avatar"]="Debe seleccionar archivo png ó jpg";
-        }
-            
-    }
-
-    return $errores;
-}
-*/
 
 function inputUsuario($campo){
     if(isset($_POST[$campo])){
@@ -132,7 +95,7 @@ function armarRegistro($datos,$imagen){
     $usuario = [
         "nombre"=>$datos["usuarioSignUp"],
         "email"=>$datos["mailSignUp"],
-        "password"=>password_hash($datos["passwordSignup"],PASSWORD_DEFAULT),
+        "password"=>password_hash($datos["password"],PASSWORD_DEFAULT),
         "avatar"=>$imagen,
     ];
     return $usuario;
@@ -144,7 +107,7 @@ function guardarUsuario($usuario){
 }
 
 function buscarEmail($email){
-    $baseDatosUsuarios = abrirBaseDatos(); 
+    $baseDatosUsuarios=abrirBaseDatos(); 
     foreach ($baseDatosUsuarios as  $usuario) {
         if ($usuario["email"]== $email){
             return $usuario;
@@ -167,30 +130,7 @@ function seteoSesion($usuario,$datos){
     $_SESSION["email"]=$usuario["email"];
     $_SESSION["nombre"]=$usuario["nombre"];
     $_SESSION["avatar"]=$usuario["avatar"];
-    
-    setcookie("email",$usuario["email"],time()+3600);
     if(isset($datos["recordar"])){
-        setcookie("password",$datos["password"],time()+3600);
-    }    
-}
-
-function controlAcceso(){
-    if(isset($_SESSION["email"])){
-        return true;
-    }elseif (isset($_COOKIE["email"])) {
-        $_SESSION["email"]=$_COOKIE["email"];
-        return true;
-    }else{
-        return false;
-    }    
-}
-
-
-function logout(){
-    session_start();
-    session_destroy();
-    setcookie("email","",time()-1);
-    if(isset($_COOKIE["password"])){
-        setcookie("password","",time()-1);
-    }    
+        setcookie("email",$usuario["email"],"password",$datos["password"],time()+3600);
+    }
 }

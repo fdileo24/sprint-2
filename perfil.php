@@ -1,16 +1,5 @@
 <?php
 include_once("controladores/funciones.php");
-$errores=[];
-if (($_POST)){
-  $errores=validarSignUp($_POST);
-  if (count($errores)==0){
-    $avatarperfil=armarAvatar($_FILES);
-    $usuario=armarRegistro($_POST,$avatarperfil);
-    guardarUsuario($usuario);
-    seteoSesion($usuario,$_POST);
-    header('Location: index.php');
-  }
-}
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +30,7 @@ if (($_POST)){
               <li class="nav-item">
                   <a class="nav-link" href="login.php">Login</a> 
               </li>
-              <li class="nav-item active">
+              <li class="nav-item ">
                   <a class="nav-link" href="signup.php">Registrate<span class="sr-only">(current)</span></a>  
               </li>
             <?php endif;?>
@@ -49,7 +38,7 @@ if (($_POST)){
                   <a class="nav-link" href="preguntas.php">FAQ</a> 
               </li>
             <?php if(isset($_SESSION["email"])):?>
-              <li class="nav-item">
+              <li class="nav-item active">
               <a class="nav-link" href="perfil.php">Perfil</a>            
               </li>
               <li class="nav-item">
@@ -59,57 +48,9 @@ if (($_POST)){
           </ul>
         </div>
       </nav>
-
-      <!-- Tabla de errores  -->
-      <?php
-        if (count($errores)>0):?>
-            <ul class="alert alert-danger">
-            <?php foreach ($errores as $key => $value) :?>
-                <li><?=$value;?></li>
-            <?php endforeach;?>
-            </ul>
-      <?php endif;?>
-
-      <!-- Formulario  -->
-      <div class="login">
-    <form class="text-center border border-0 p-5 col-md-4  center_div__ " method="POST" enctype="multipart/form-data" >   
-        <!-- <form class="text-center border border-light p-5 col-md-4 col-sm-6 center_div__ "> -->
-        <p class="h4 mb-4 text-white">Sign up</p>
-        
-        <!-- Usuario -->
-        <input type="text" id="usuarioSignUp" class="form-control mb-4" <?php
-        if (empty($_POST["usuarioSignUp"])):?> placeholder="Usuario" <?php else:?> value=<?=$_POST["usuarioSignUp"];?> <?php endif;?> name="usuarioSignUp">
-
-        <!-- E-mail -->
-        <input type="email" id="Email" class="form-control mb-4" <?php
-    if (empty($_POST["mailSignUp"])):?> placeholder="E-mail" <?php else:?> value=<?=$_POST["mailSignUp"];?> <?php endif;?>  name="mailSignUp">
-        <!-- No se persiste el password por cuestiones de seguridad"> -->
-        <!-- Password -->
-        <input type="password" id="defaultRegisterFormPassword" class="form-control mb-4 " placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" name="password">
-        <!-- RePassword -->
-        <input type="password" id="defaultRegisterFormPassword" class="form-control mb-4 " placeholder="Confirma el password" aria-describedby="defaultRegisterFormPasswordHelpBlock" name="repassword">
-        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-white mb-4 ">
-          El password debe tener por lo menos 6 caracteres.
-        </small>
-        <!--imagen -->
-        <div class="custom-file">
-        <input type="file" class="custom-file-input" id="avatar" name="avatar" >
-        <label class="custom-file-label" for="avatar">Elegi una foto</label>
-        </div>
-        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-white mb-4 ">
-          Selecciona una imagen de avatar , debe ser jpeg.
-        <!-- Botom -->
-        <button class="btn btn-info my-4 btn-block " type="submit">Registrate!</button>
-        <hr>
-
-        <!--ToS -->
-        <p class="text-white">Haciendo click en 
-            <em>Registrate</em> estas de acuerdo con nuestros
-            <a href="" target="_blank" >Terminos y condiciones</a></p>
-
-    </form>
-  </div>
+        <div class="container">
   <!--PIE DE PAG-->
+  <div class="container">
     <footer class="pie">
         <div class="row">
             <section class="col-sm-12 col-md-6 col-lg-6">

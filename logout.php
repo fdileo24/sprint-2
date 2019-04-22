@@ -1,9 +1,12 @@
 <?php
 session_start();
-session_destroy();
-setcookie("email","",time()-1);
-if(isset($_COOKIE["password"])){
-    setcookie("password","",time()-1);
+if (empty($_SESSION["email"])){
+    header('Location: login.php');
+}else{
+    session_destroy();
+    if(isset($_COOKIE["email"])){
+        setcookie("email","",time()-1);
+    }
+    header('Location: index.php');
 }
-header('Location: login.php');
 ?>

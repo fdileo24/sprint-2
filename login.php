@@ -1,9 +1,13 @@
 <?php
 include_once("controladores/funciones.php");
 
-if ($_POST){
+if($_POST){
+  
   $errores=validarLogin($_POST);
   if (empty($errores)){
+    $usuario=buscarEmail($_POST["UsuarioLogin"]);
+    seteoSesion($usuario,$_POST);
+    header('Location: index.php');
   }
 }
 ?>
@@ -22,7 +26,7 @@ if ($_POST){
     <script src="main.js"></script>
 </head>
 <body>   
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand logo_" href="index.php">QC!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,15 +36,25 @@ if ($_POST){
             <li class="nav-item">
               <a class="nav-link" href="index.php">Home</a>
             </li>
-            <li class="nav-item active">
-             <a class="nav-link" href="login.php">Login<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="signup.php">Registrate</a>
-            </li>
-            <li class="nav-item ">
-             <a class="nav-link" href="preguntas.php">FAQ</a>
-            </li>
+            <?php if(!isset($_SESSION["email"])):?>
+              <li class="nav-item active">
+                  <a class="nav-link" href="login.php">Login<span class="sr-only">(current)</span></a> 
+              </li>
+              <li class="nav-item ">
+                  <a class="nav-link" href="signup.php">Registrate</a>  
+              </li>
+            <?php endif;?>
+              <li class="nav-item ">
+                  <a class="nav-link" href="preguntas.php">FAQ</a> 
+              </li>
+            <?php if(isset($_SESSION["email"])):?>
+              <li class="nav-item">
+              <a class="nav-link" href="perfil.php">Perfil</a>            
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="logout.php">Logout</a>            
+              </li>
+            <?php endif;?>
           </ul>
         </div>
       </nav>
@@ -59,9 +73,13 @@ if ($_POST){
     <form class="text-center border border-0 p-5 col-md-4  center_div__ " method="POST">   
         <p class="h4 mb-4 text-white">Login!</p>       
         <!-- Usuario -->
-        <input type="usuario" id="UsuarioLogin" class="form-control mb-4" name="UsuarioLogin" placeholder="Usuario">
+        <input type="usuario" id="UsuarioLogin" class="form-control mb-4" name="UsuarioLogin" <?php
+        if (empty($_POST["UsuarioLogin"])):?> placeholder="E-mail" <?php else:?> value=<?=$_POST["UsuarioLogin"];?> <?php endif;?>placeholder="E-mail">
         <!-- Password -->
-        <input type="password" id="PasswordLogin" class="form-control" name="PasswordLogin" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+        <input type="password" id="PasswordLogin" class="form-control mb-4" name="password" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+        <!-- Remember -->
+        <input class="form-check-input" type="checkbox" value="" id="recordar" name="recordar">
+        <label class="form-check-label text-white mb-4" for="defaultCheck1">Remember me!</label>
         <!-- Botom -->
         <button class="btn btn-info my-4 btn-block " type="submit">Logeate!</button>
     </form>
