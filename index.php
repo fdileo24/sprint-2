@@ -67,36 +67,40 @@ include_once("controladores/funciones.php");
     <div class="row">
       <div class="col-6 col-md-12 about"> 
         <br>
-        <h5 class="tituloabout">
-          Our story!
-        </h5>
-        <p class="about">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          <br>
-           Explicabo sed dolor totam excepturi, quam consequatur laboriosam doloremque repudiandae placeat tempore, ab debitis quae! 
-           <br>
-           Ex architecto incidunt cupiditate sequi voluptatem. Cum?
-        </p>
-        <hr>
-        <h5 class="tituloabout">
-          Share your experience with us!
-        </h5>
-        <p class="about">
-          We encorage you to uplode videos of yourself playing the game!
-          <br>
-          we will share the funniest ones!
-        </p>
-      </div> 
+        <section>
+          <article>
+            <h5 class="tituloabout">
+              Nuestra Historia!
+            </h5>
+            <p class="about">
+              Somos un grupo de desarrolladores que crearon Queer Cheer, juego
+              <br>
+              de preguntas y respuestas, basadas en la cultura queer.
+              <br>
+              Preguntas desde música, teatro, política y más! Listo para que juegues con tus amigos o solo!
+            </p>
+            <hr>
+            <h5 class="tituloabout">
+            Comparte tu experiencia!
+            </h5>
+            <p class="about">
+            Puedes subir tu video jugando a las redes sociales etiquetandonos a @QueerCheer!
+              <br>
+            Compartiremos los más divertidos!
+            </p>
+          </div>
+          </article> 
+        </section>
       <!--HIPERVINCULOS PARA IRSE A JUGAR-->
       <div class="col-6 col-md-12">
         <div class="card text-white bg-warning mb-3 jugar" >
-          <div class="card-header">EASY</div>
+          <div class="card-header">NIVEL: FÁCIL</div>
           <div class="card-body">
             <a href="login.html"> <h5 class="card-title play">PLAY</h5></a>
           </div>
         </div>
         <div class="card text-white bg-info mb-3 jugar" >
-          <div class="card-header">HARD</div>
+          <div class="card-header">NIVEL: DIFÍCIL</div>
             <div class="card-body">
               <a href="login.html"> <h5 class="card-title play">PLAY</h5></a>
             </div>
@@ -109,11 +113,11 @@ include_once("controladores/funciones.php");
   <footer class="pie">
     <div class="row">
         <section class="col-sm-12 col-md-6 col-lg-6">
-          <h4>Costumer Service</h4>
+          <h4>Servicio al Consumidor</h4>
           <br>
           <p>0800-19354778-99010</p>
           <br>
-          <h4>Address</h4>
+          <h4>Dirección</h4>
           <p>Virrey del Skere 1980</p>
         </section>
         <section class="col-sm-12 col-md-6 col-lg-6">

@@ -299,11 +299,11 @@ include_once("controladores/funciones.php");
    <footer class="pie">
     <div class="row">
       <section class="col-sm-12 col-md-6 col-lg-6">
-        <h4>Costumer Service</h4>
+        <h4>Servicio al Consumidor</h4>
         <br>
         <p>0800-19354778-99010</p>
         <br>
-        <h4>Address</h4>
+        <h4>Dirección</h4>
         <p>Virrey del Skere 1980</p>
       </section>
       <section class="col-sm-12 col-md-6 col-lg-6">
